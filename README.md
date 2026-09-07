@@ -59,6 +59,19 @@ See `examples/argus/` for a complete real-world example: an OpenRocket export fr
 
 Core `DragModel` parser and interpolation are complete and tested against real OpenRocket exports. AeroVECTOR integration pattern is documented and working. Contributions for other sim targets welcome.
 
+## Worked example
+
+`examples/argus/` contains a real 491-point Mach-vs-Cd export from the ARGUS TVC rocket project's OpenRocket simulation, plus `compare_drag.py`, which loads it through `DragModel` and plots it.
+
+Notably, the raw export contains real low-Mach Cd spikes near liftoff (Cd is numerically unstable when dynamic pressure is near zero) — the script shows this honestly and applies a simple physical clamp as one reasonable way to handle it:
+
+![ARGUS drag comparison](examples/argus/argus_drag_comparison.png)
+
+Run it yourself:
+```bash
+python examples/argus/compare_drag.py
+```
+
 ## License
 
 MIT
